@@ -1,4 +1,5 @@
-// VEX V5 C++ Project
+//MASKED ROBOTICS HOMONOMIC DRIVE CODE BASE
+//NMACERI ET AL
 #include "vex.h"
 
 // ---- START VEXCODE CONFIGURED DEVICES ----
@@ -15,10 +16,10 @@
 using namespace vex;
 
 //#region config_globals
-vex::motor      back_right_motor(vex::PORT1, vex::gearSetting::ratio18_1, true);
-vex::motor      back_left_motor(vex::PORT10, vex::gearSetting::ratio18_1, false);
-vex::motor      front_right_motor(vex::PORT11, vex::gearSetting::ratio18_1, true);
-vex::motor      front_left_motor(vex::PORT20, vex::gearSetting::ratio18_1, false);
+vex::motor      back_right_motor(vex::PORT1, vex::gearSetting::ratio36_1, true);
+vex::motor      back_left_motor(vex::PORT10, vex::gearSetting::ratio36_1, false);
+vex::motor      front_right_motor(vex::PORT11, vex::gearSetting::ratio36_1, true);
+vex::motor      front_left_motor(vex::PORT20, vex::gearSetting::ratio36_1, false);
 vex::controller con(vex::controllerType::primary);
 //#endregion config_globals
 
