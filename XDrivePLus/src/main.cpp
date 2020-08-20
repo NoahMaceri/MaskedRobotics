@@ -25,6 +25,7 @@ vex::controller con(vex::controllerType::primary);
 
 
 int main(void) {
+      vexcodeInit();
     while(true) {
         //Get the raw sums of the X and Y joystick axes
         double front_left  = (double)(con.Axis3.position(pct) + con.Axis4.position(pct));
