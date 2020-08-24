@@ -66,25 +66,94 @@ void move(int option, float inches){
   default:
     break;
 } // end switch
-
-  
 }
+void intake(int direction){
+  switch(direction){
+    //Forward
+    case 0:
+      Motor393A.spin(forward);
+      break;
+    //Reverse
+    case 1:
+      Motor393A.spin(reverse);
+      break;
+    //stop case
+    case 3:
+      Motor393A.stop();
+      break;
+    default:
+      break;
+  }
+}
+
+void armMove(int option, double time)
+{
+   switch(option)//Switch to determine how robot should behave with options
+   {
+     case 0: //raises the arm up
+        Motor5.spin(forward);
+        Motor6.spin(forward);
+        wait(time, seconds);
+        Motor5.stop();
+        Motor6.stop();
+        Motor5.setBrake(hold);
+        Motor6.setBrake(hold);
+       break;
+     case 1: //lowers the arm down
+        Motor5.spin(reverse);
+        Motor6.spin(reverse);
+        wait(time, seconds);
+        Motor5.stop();
+        Motor6.stop();
+        Motor5.setBrake(hold);
+        Motor6.setBrake(hold);
+       break;
+     default: //do nothing catches miss inputs 
+       break;
+   }
+}
+
 //this function will rotate the robor X amount of degrees specified
 void rotate(float degrees) {
   //determine necessary measurement to have robot rotate
   float wheelDegrees=TURNING_RATIO*degrees;
   back_right_motor.startRotateFor((wheelDegrees*ROTATION_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+  front_left_motor.startRotateFor(-(wheelDegrees*ROTATION_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
   back_left_motor.startRotateFor(-(wheelDegrees*ROTATION_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
   front_right_motor.startRotateFor((wheelDegrees*ROTATION_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
-  front_left_motor.startRotateFor(-(wheelDegrees*ROTATION_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
 }
 
 
 int main(void) {
+    //Boom boom boom lets go baby
     vexcodeInit();
+    //AUTON CODE
+    //Move to baseballs (with a lil push)
+    move(0, 8);
+    //BEGIN THE SUCK
+    intake(0);
+    //Wait for it to move to the balls
+    wait(4, seconds);
+    //move back into the field and wait for that
+    move(0, -4);
+    wait(2, seconds);
+    //rotate to face the outside of the field and wait for that
     rotate(90);
+    wait(2, seconds);
+    //move back twords the center wall and wait for it to move
+    move(0, -7);
+    wait(2, seconds);
+    //move the arm up to drop the baseballs and wait for it to do that
+    armMove(0, 4);
+    wait(2, seconds);
+    //move the arm back to resting and wait for it to do that
+    armMove(1, 4);
+    //stop intake
+    intake(3);
+
+
     //AUTON TIMEOUT
-    wait(29, seconds);
+    wait(10, seconds);
     while(true) {
         //Get the raw sums of the X and Y joystick axes
         double front_left  = (double)(con.Axis3.position(pct) + con.Axis4.position(pct));
