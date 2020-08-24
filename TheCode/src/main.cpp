@@ -34,34 +34,36 @@ const float ROTATION_OFFSET=1.0;
 const int power = 50;
 
 //this method will move the robot X amount of inches specified
-  void move(int option, float inches){
+void move(int option, float inches){
   //determines necessary about of degrees to move the robot
-   float degrees = inches/INCHES_PER_DEGREE;
-    switch(option){
+  float degrees = inches/INCHES_PER_DEGREE;
+  switch(option){
   //Switch to determine how robot should behave with options
   //case 0 moves robot up and down
-    case 0:
+  case 0:
     back_right_motor.startRotateFor((degrees*WHEEL_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
     back_left_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct);
     front_right_motor.startRotateFor((degrees*WHEEL_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
     front_left_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct);
     break;
   //case 1 moves robot left and right
-    case 1:
+  case 1:
     back_right_motor.startRotateFor(-(degrees*WHEEL_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
     back_left_motor.startRotateFor((degrees*WHEEL_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
     front_right_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct);
     front_left_motor.startRotateFor(-(degrees*WHEEL_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
     break;
   //case 2 handles robot going diagonally with one pair of motors
-    case 2:
+  case 2:
     back_right_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct);
     front_left_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct);
     break; 
   //case 3 operates same as case 2, but with different pairs of motors
-    case 3:
+  case 3:
     back_left_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct);
     front_right_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct); 
+    break;
+  default:
     break;
 } // end switch
 
