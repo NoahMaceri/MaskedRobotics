@@ -124,10 +124,7 @@ void rotate(float degrees) {
 }
 
 
-int main(void) {
-    //Boom boom boom lets go baby
-    vexcodeInit();
-    //AUTON CODE
+void theBaseballAuton(){
     //Move to baseballs (with a lil push)
     move(0, 8);
     //BEGIN THE SUCK
@@ -150,8 +147,13 @@ int main(void) {
     armMove(1, 4);
     //stop intake
     intake(3);
+}
 
-
+int main(void) {
+    //Boom boom boom lets go baby
+    vexcodeInit();
+    //AUTON CODE
+    theBaseballAuton();
     //AUTON TIMEOUT
     wait(10, seconds);
     while(true) {
