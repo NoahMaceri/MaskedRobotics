@@ -83,6 +83,8 @@ void rotate(float degrees) {
 int main(void) {
     vexcodeInit();
     rotate(90);
+    //AUTON TIMEOUT
+    wait(29, seconds);
     while(true) {
         //Get the raw sums of the X and Y joystick axes
         double front_left  = (double)(con.Axis3.position(pct) + con.Axis4.position(pct));
