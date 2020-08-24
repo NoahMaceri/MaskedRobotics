@@ -39,6 +39,8 @@ int rc_auto_loop_function_Controller1() {
       } else if (!Controller1LeftShoulderControlMotorsStopped) {
         Motor5.stop();
         Motor6.stop();
+        Motor5.setBrake(hold);
+        Motor6.setBrake(hold);
         // set the toggle so that we don't constantly tell the motor to stop when the buttons are released
         Controller1LeftShoulderControlMotorsStopped = true;
       }
