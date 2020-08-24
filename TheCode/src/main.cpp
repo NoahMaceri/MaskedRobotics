@@ -23,9 +23,64 @@ vex::motor      front_left_motor(vex::PORT20, vex::gearSetting::ratio36_1, false
 vex::controller con(vex::controllerType::primary);
 //#endregion config_globals
 
+//variables regarding conversion from inches to degrees
+const double WHEEL_DIAMETER=4.0; 
+const float WHEEL_CIRCUMFERENCE = WHEEL_DIAMETER*3.14156;
+const float INCHES_PER_DEGREE= WHEEL_CIRCUMFERENCE/360;
+const double WHEEL_OFFSET = sqrt(2); 
+const double TURNING_DIAMETER = 20.75; 
+const float TURNING_RATIO= TURNING_DIAMETER/WHEEL_DIAMETER;
+const float ROTATION_OFFSET=1.0; 
+const int power = 50;
+
+//this method will move the robot X amount of inches specified
+  void move(int option, float inches){
+  //determines necessary about of degrees to move the robot
+   float degrees = inches/INCHES_PER_DEGREE;
+    switch(option){
+  //Switch to determine how robot should behave with options
+  //case 0 moves robot up and down
+    case 0:
+    back_right_motor.startRotateFor((degrees*WHEEL_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+    back_left_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+    front_right_motor.startRotateFor((degrees*WHEEL_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+    front_left_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+    break;
+  //case 1 moves robot left and right
+    case 1:
+    back_right_motor.startRotateFor(-(degrees*WHEEL_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+    back_left_motor.startRotateFor((degrees*WHEEL_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+    front_right_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+    front_left_motor.startRotateFor(-(degrees*WHEEL_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+    break;
+  //case 2 handles robot going diagonally with one pair of motors
+    case 2:
+    back_right_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+    front_left_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+    break; 
+  //case 3 operates same as case 2, but with different pairs of motors
+    case 3:
+    back_left_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+    front_right_motor.startRotateFor(degrees*WHEEL_OFFSET, vex::rotationUnits::deg, power, vex::velocityUnits::pct); 
+    break;
+} // end switch
+
+  
+}
+//this function will rotate the robor X amount of degrees specified
+void rotate(float degrees) {
+  //determine necessary measurement to have robot rotate
+  float wheelDegrees=TURNING_RATIO*degrees;
+  back_right_motor.startRotateFor((wheelDegrees*ROTATION_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+  back_left_motor.startRotateFor(-(wheelDegrees*ROTATION_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+  front_right_motor.startRotateFor((wheelDegrees*ROTATION_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+  front_left_motor.startRotateFor(-(wheelDegrees*ROTATION_OFFSET), vex::rotationUnits::deg, power, vex::velocityUnits::pct);
+}
+
 
 int main(void) {
-      vexcodeInit();
+    vexcodeInit();
+    rotate(90);
     while(true) {
         //Get the raw sums of the X and Y joystick axes
         double front_left  = (double)(con.Axis3.position(pct) + con.Axis4.position(pct));
