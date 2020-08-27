@@ -3,12 +3,12 @@ The best robitics team around
 
 
 # Agile Teams
-| Mech  | Code |
-| ------------- | ------------- |
-| Ehren (TL) | Noah (TL) |
-| Megan | Myny |
-| Ehren | Trey |
-| Thomas | Zach |
+| Mech | Cross Functional Communication | Code |
+| ------------- | ------------- | ------------- |
+| Ehren (TL) | Noah | Noah (TL) |
+| Megan | Megan | Myny |
+| Ehren | Myny | Trey |
+| Thomas | Ehren | Zach |
 
 
 # Current Progross
