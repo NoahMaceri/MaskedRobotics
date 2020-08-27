@@ -130,7 +130,7 @@ void theBaseballAuton(){
     //BEGIN THE SUCK
     intake(0);
     //Wait for it to move to the balls
-    wait(4, seconds);
+    wait(6, seconds);
     //move back into the field and wait for that
     move(0, -4);
     wait(2, seconds);
@@ -138,7 +138,7 @@ void theBaseballAuton(){
     rotate(90);
     wait(2, seconds);
     //move back twords the center wall and wait for it to move
-    move(0, -7);
+    move(0, -6);
     wait(2, seconds);
     //move the arm up to drop the baseballs and wait for it to do that
     armMove(0, 4);
@@ -154,8 +154,8 @@ int main(void) {
     vexcodeInit();
     //AUTON CODE
     theBaseballAuton();
-    //AUTON TIMEOUT
-    wait(10, seconds);
+    //AUTON TIMEOUT FOR BASEBALL:
+    wait(1, seconds);
     while(true) {
         //Get the raw sums of the X and Y joystick axes
         double front_left  = (double)(con.Axis3.position(pct) + con.Axis4.position(pct));
