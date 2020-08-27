@@ -2,7 +2,7 @@
 The best robitics team around
 
 
-# Teams
+# Agile Teams
 | Mech  | Code |
 | ------------- | ------------- |
 | Ehren (TL) | Noah (TL) |
@@ -10,14 +10,10 @@ The best robitics team around
 | Ehren | Trey |
 | Thomas | Zach |
 
-# Preformance Criteria
-Robot: Robust, reliable, good autonomy
-Team: Agile, organized, timely
 
-# Participation
-Online can help people in person or code and test code
-Everyone will do documentation
-Inperson members are to stay on task and engaged
+# Current Progross
+* Full controller support for intake, arm, and X-drive
+* Auton method for baseball
 
-# Conflict Resolution
-Subteam resolution first, if it is still an issue bring it to the whole group
+# License 
+All code is provided as is with no warranty explicit or implied. 
