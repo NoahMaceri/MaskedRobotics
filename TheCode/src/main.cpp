@@ -149,11 +149,31 @@ void theBaseballAuton(){
     intake(3);
 }
 
+void theBasketballAuton()
+{
+  intake(0);
+  move(0, 8);
+  wait(5, seconds);
+  move(0, -20);
+  wait(4,seconds);
+  rotate(-90);
+  wait(2, seconds);
+  move(0, -7.5);
+  wait(3, seconds);
+  armMove(0, 3.6);
+  wait(3.6, seconds);
+  armMove(1, 3.6);
+  wait(3.6,seconds);
+  intake(3);
+
+}
+
 int main(void) {
     //Boom boom boom lets go baby
     vexcodeInit();
     //AUTON CODE
-    theBaseballAuton();
+    //theBaseballAuton();
+    theBasketballAuton();
     //AUTON TIMEOUT FOR BASEBALL:
     wait(1, seconds);
     while(true) {
