@@ -174,7 +174,7 @@ int main(void) {
     //AUTON CODE
     //theBaseballAuton();
     theBasketballAuton();
-    //AUTON TIMEOUT FOR BASEBALL:
+    //AUTON TIMEOUT (leave this please dad):
     wait(1, seconds);
     while(true) {
         //Get the raw sums of the X and Y joystick axes
