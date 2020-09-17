@@ -149,13 +149,32 @@ void theBaseballAuton(){
     intake(3);
 }
 
+void theBasketballAuton()
+{
+  intake(0);
+  move(0, 8);
+  wait(6, seconds);
+  move(0, -20);
+  wait(4,seconds);
+  rotate(-90);
+  wait(2, seconds);
+  move(0, -7.5);
+  wait(3, seconds);
+  armMove(0, 3.6);
+  wait(3.6, seconds);
+  armMove(1, 3.6);
+  wait(3.6,seconds);
+  rotate(20);
+}
+
 int main(void) {
     //Boom boom boom lets go baby
     vexcodeInit();
     //AUTON CODE
-    theBaseballAuton();
-    //AUTON TIMEOUT FOR BASEBALL:
-    wait(1, seconds);
+    //theBaseballAuton();
+    theBasketballAuton();
+    //AUTON TIMEOUT (leave this please dad):
+    wait(0.5, seconds);
     while(true) {
         //Get the raw sums of the X and Y joystick axes
         double front_left  = (double)(con.Axis3.position(pct) + con.Axis4.position(pct));
