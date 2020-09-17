@@ -1,6 +1,7 @@
 # MaskedRobotics
 The best robitics team around
 
+Winners of the Summer 2020 IME Grand Championship
 
 # Agile Teams
 | Mech | Cross Functional Communication | Code |
