@@ -153,7 +153,7 @@ void theBasketballAuton()
 {
   intake(0);
   move(0, 8);
-  wait(5, seconds);
+  wait(6, seconds);
   move(0, -20);
   wait(4,seconds);
   rotate(-90);
@@ -164,8 +164,7 @@ void theBasketballAuton()
   wait(3.6, seconds);
   armMove(1, 3.6);
   wait(3.6,seconds);
-  intake(3);
-
+  rotate(20);
 }
 
 int main(void) {
@@ -175,7 +174,7 @@ int main(void) {
     //theBaseballAuton();
     theBasketballAuton();
     //AUTON TIMEOUT (leave this please dad):
-    wait(1, seconds);
+    wait(0.5, seconds);
     while(true) {
         //Get the raw sums of the X and Y joystick axes
         double front_left  = (double)(con.Axis3.position(pct) + con.Axis4.position(pct));
